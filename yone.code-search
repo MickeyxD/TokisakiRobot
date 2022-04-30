@@ -1,0 +1,787 @@
+# Query: yone
+# ContextLines: 1
+
+278 results - 73 files
+
+.gitignore:
+  1  
+  2: Tokisaki/test.py
+  3: Tokisaki/__init__.py
+  4: Tokisaki/Database/Mongo/__init__.py
+  5: Tokisaki/Database/Mongo/afk.py
+
+app.json:
+   1  {
+   2:     "name": "TokisakiRobot",
+   3      "description": "Telegram group management bot.",
+
+   8         "manager",
+   9:        "tokisaki"
+  10      ],   
+  11:  "repository": "https://github.com/noob-kittu/TokisakiRobot",
+  12   "addons": [
+
+Procfile:
+  1: worker: python3 -m Tokisaki
+  2  ps:scale worker=1
+
+Tokisaki\__help__.py:
+   1  import importlib, re
+   2: from Tokisaki import dispatcher, ALLOW_EXCL, LOGGER
+   3  from telegram import InlineKeyboardButton, InlineKeyboardMarkup, ParseMode, Update
+   4: from Tokisaki.Handlers.misc import paginate_modules
+   5  from telegram.error import BadRequest
+
+   7  from telegram.utils.helpers import escape_markdown
+   8: from Tokisaki.Handlers.validation import is_user_admin
+   9  from telegram.ext.dispatcher import DispatcherHandlerStop
+
+  34  import os
+  35: path =r'Tokisaki/Plugins/'
+  36  list_of_files = []
+
+  47  
+  48: path =r'Tokisaki/Plugins/Admin/'
+  49  admin_list_of_files = []
+
+  72  
+  73: path =r'Tokisaki/Plugins/User/'
+  74  user_list_of_files = []
+
+  98  
+  99: path =r'Tokisaki/Plugins/Tools/'
+  100  tools_list_of_files = []
+
+Tokisaki\__init__.py:
+  81  else:
+  82:     from Tokisaki.config import Development as Config
+  83  
+
+Tokisaki\__main__.py:
+   13  from telegram.utils.helpers import escape_markdown, mention_html
+   14: from Tokisaki.Handlers.validation import is_user_admin
+   15  
+
+   20  
+   21: from Tokisaki import (
+   22      OWNER_ID,
+
+   36  
+   37: from Tokisaki.Plugins import ALL_MODULES
+   38: from Tokisaki.__help__ import (
+   39  get_help, 
+
+  177          InlineKeyboardButton(
+  178:             text="Bot Info", callback_data="tokisaki_"
+  179          ),
+
+  222  
+  223: def tokisaki_about_callback(update: Update, context: CallbackContext):
+  224      first_name = update.effective_user.first_name
+  225      query = update.callback_query
+  226:     if query.data == "tokisaki_":
+  227          query.message.edit_text(
+
+  242                     [
+  243:                      InlineKeyboardButton(text="Support", url="t.me/tokisaki_Support"),
+  244:                      InlineKeyboardButton(text="News", url="t.me/tokisaki_Updates"),
+  245                     ],
+  246                     [
+  247:                     InlineKeyboardButton(text="Back", callback_data="tokisaki_back")
+  248                     ]
+
+  251          )
+  252:     elif query.data == "tokisaki_back":
+  253          query.message.edit_text(
+
+  269          InlineKeyboardButton(
+  270:             text="Bot Info", callback_data="tokisaki_"
+  271          ),
+
+  303  
+  304:     about_callback_handler = CallbackQueryHandler(tokisaki_about_callback, pattern=r"tokisaki_", run_async=True)
+  305  
+
+Tokisaki\Database\__init__.py:
+  4  
+  5: from Tokisaki import DB_URI, LOGGER as log
+  6  
+
+Tokisaki\Database\afk_sql.py:
+  4  
+  5: from Tokisaki.Database import BASE, SESSION
+  6  from sqlalchemy import Boolean, Column, BigInteger, UnicodeText, DateTime
+
+Tokisaki\Database\antiflood_sql.py:
+  4  
+  5: from Tokisaki.Database import SESSION, BASE
+  6  
+
+Tokisaki\Database\approve_sql.py:
+  4  
+  5: from Tokisaki.Database import BASE, SESSION
+  6  
+
+Tokisaki\Database\blacklist_sql.py:
+  4  
+  5: from Tokisaki.Database import SESSION, BASE
+  6  
+
+Tokisaki\Database\blacklistusers_sql.py:
+  2  
+  3: from Tokisaki.Database import BASE, SESSION
+  4  from sqlalchemy import Column, String, UnicodeText
+
+Tokisaki\Database\connection_sql.py:
+  6  
+  7: from Tokisaki.Database import SESSION, BASE
+  8  
+
+Tokisaki\Database\cust_filters_sql.py:
+  6  
+  7: from Tokisaki.Handlers.msg_types import Types
+  8: from Tokisaki.Database import BASE, SESSION
+  9  
+
+Tokisaki\Database\disable_sql.py:
+  2  
+  3: from Tokisaki.Database import BASE, SESSION
+  4  from sqlalchemy import Column, String, UnicodeText, distinct, func
+
+Tokisaki\Database\global_bans_sql.py:
+  2  
+  3: from Tokisaki.Database import BASE, SESSION
+  4  from sqlalchemy import Boolean, Column, BigInteger, String, UnicodeText
+
+Tokisaki\Database\locks_sql.py:
+  4  
+  5: from Tokisaki.Database import SESSION, BASE
+  6  
+
+Tokisaki\Database\log_channel_sql.py:
+  2  
+  3: from Tokisaki.Database import BASE, SESSION
+  4  from sqlalchemy import Column, String, distinct, func
+
+Tokisaki\Database\notes_sql.py:
+  3  
+  4: from Tokisaki.Handlers.msg_types import Types
+  5: from Tokisaki.Database import BASE, SESSION
+  6  from sqlalchemy import Boolean, Column, BigInteger, String, UnicodeText, distinct, func
+
+Tokisaki\Database\purges_sql.py:
+  2  
+  3: from Tokisaki.Database import BASE, SESSION
+  4  from sqlalchemy import (Column, BigInteger, String)
+
+Tokisaki\Database\reporting_sql.py:
+  3  
+  4: from Tokisaki.Database import BASE, SESSION
+  5  from sqlalchemy import Boolean, Column, BigInteger, String
+
+Tokisaki\Database\rules_sql.py:
+  2  
+  3: from Tokisaki.Database import BASE, SESSION
+  4  from sqlalchemy import Column, String, UnicodeText, distinct, func
+
+Tokisaki\Database\userinfo_sql.py:
+  2  
+  3: from Tokisaki.Database import BASE, SESSION
+  4  from sqlalchemy import Column, BigInteger, UnicodeText
+
+Tokisaki\Database\users_sql.py:
+  2  
+  3: from Tokisaki import dispatcher
+  4: from Tokisaki.Database import BASE, SESSION
+  5  from sqlalchemy import (
+
+Tokisaki\Database\warns_sql.py:
+  2  
+  3: from Tokisaki.Database import BASE, SESSION
+  4  from sqlalchemy import Boolean, Column, BigInteger, String, UnicodeText, distinct, func
+
+Tokisaki\Database\welcome_sql.py:
+   4  
+   5: from Tokisaki.Handlers.msg_types import Types
+   6: from Tokisaki.Database import BASE, SESSION
+   7  from sqlalchemy import BigInteger, Boolean, Column, String, UnicodeText
+
+  20      "{first} just joined the chat - asdgfhak!",
+  21:     "{first} just joined. Everyone, look busy!",
+  22      "Welcome, {first}. Stay awhile and listen.",
+
+  89      "Welcome {first}, watch out for falling monkeys.",
+  90:     "Everyone stop what you’re doing, We are now in the presence of {first}.",
+  91      "Hey {first}, do you wanna know how I got these scars?",
+
+Tokisaki\Handlers\extraction.py:
+  2  
+  3: from Tokisaki import LOGGER
+  4: from Tokisaki.Plugins.users import get_user_id
+  5  from telegram import Message, MessageEntity
+
+Tokisaki\Handlers\filters.py:
+  1: from Tokisaki import DEV_USERS, INSPECTOR, REQUESTER
+  2  from telegram import Message
+
+Tokisaki\Handlers\managers.py:
+  1: import Tokisaki.Database.blacklistusers_sql as sql
+  2: from Tokisaki import ALLOW_EXCL
+  3: from Tokisaki import DEV_USERS, INSPECTOR, REQUESTER
+  4  from itertools import chain
+
+Tokisaki\Handlers\misc.py:
+   3  from telegram import InlineKeyboardButton, MAX_MESSAGE_LENGTH, ParseMode, Bot
+   4: from Tokisaki import NO_LOAD
+   5  from telegram.error import TelegramError
+
+  49              (EqInlineKeyboardButton("⮜", callback_data="{}_prev({})".format(prefix, modulo_page)),
+  50:                 EqInlineKeyboardButton("Back", callback_data="tokisaki_back"),
+  51               EqInlineKeyboardButton("⮞", callback_data="{}_next({})".format(prefix, modulo_page)))]
+
+  53      else:
+  54:         pairs += [[EqInlineKeyboardButton("Back", callback_data="tokisaki_back")]]
+  55  
+
+Tokisaki\Handlers\msg_types.py:
+  2  
+  3: from Tokisaki.Handlers.string_handling import button_markdown_parser
+  4  from telegram import Message
+
+Tokisaki\Handlers\validation.py:
+    1  from telegram import Chat, ChatMember, Update, ParseMode
+    2: from Tokisaki import INSPECTOR, REQUESTER, DEV_USERS, DEL_CMDS, SUPPORT_CHAT, dispatcher
+    3  from threading import RLock
+
+  425  # Workaround for circular import with connection.py
+  426: from Tokisaki.Plugins.Admin import connection
+  427  
+
+Tokisaki\Handlers\telethon\__init__.py:
+  1: from Tokisaki import DEV_USERS, INSPECTOR, REQUESTER, telethn
+  2  
+
+Tokisaki\Handlers\telethon\validations.py:
+   1: from Tokisaki.Handlers.telethon import IMMUNE_USERS, telethn
+   2: from Tokisaki import REQUESTER
+   3  from telethon.tl.types import ChannelParticipantsAdmins
+
+  44  
+  45: async def tokisaki_is_admin(chat_id: int):
+  46      status = False
+  47:     tokisaki = await telethn.get_me()
+  48      async for user in telethn.iter_participants(
+
+  50      ):
+  51:         if tokisaki.id == user.id:
+  52              status = True
+
+Tokisaki\Plugins\__init__.py:
+   5  
+   6: from Tokisaki import LOAD, LOGGER, NO_LOAD
+   7  
+
+  12      import os
+  13:     path =r'./Tokisaki/Plugins/'
+  14      list_of_files = []
+
+Tokisaki\Plugins\disable.py:
+    4  from future.utils import string_types
+    5: from Tokisaki import dispatcher
+    6: from Tokisaki.Handlers.managers import CMD_STARTERS, SpamChecker
+    7: from Tokisaki.Handlers.misc import is_module_loaded
+    8  from telegram import ParseMode, Update
+
+   22  
+   23:     from Tokisaki.Handlers.validation import (
+   24          connection_status,
+
+   27      )
+   28:     from Tokisaki.Database import disable_sql as sql
+   29      from telegram.ext.dispatcher import run_async
+
+  162          if len(args) >= 1:
+  163:             disable_module = "TokisakiRobot.modules." + args[0].rsplit(".", 1)[0]
+  164  
+
+  237          if len(args) >= 1:
+  238:             enable_module = "TokisakiRobot.modules." + args[0].rsplit(".", 1)[0]
+  239  
+
+Tokisaki\Plugins\error_handler.py:
+  10  from telegram.ext import CallbackContext, CommandHandler
+  11: from Tokisaki import dispatcher, DEV_USERS, OWNER_ID, API_HASH, API_ID
+  12  from requests.structures import CaseInsensitiveDict
+
+Tokisaki\Plugins\get_common_chats.py:
+  2  from time import sleep
+  3: from Tokisaki import OWNER_ID, dispatcher
+  4: from Tokisaki.Handlers.extraction import extract_user
+  5: from Tokisaki.Database.users_sql import get_user_com_chats
+  6  from telegram import Update
+
+Tokisaki\Plugins\modules.py:
+    3  
+    4: from Tokisaki import dispatcher, telethn
+    5: from Tokisaki.__help__ import (
+    6      CHAT_SETTINGS,
+
+   15  )
+   16: from Tokisaki.Handlers.validation import dev_plus, sudo_plus
+   17  from telegram import ParseMode, Update
+
+   30      try:
+   31:         imported_module = importlib.import_module("TokisakiRobot.modules." + text)
+   32      except:
+
+  101      try:
+  102:         imported_module = importlib.import_module("TokisakiRobot.modules." + text)
+  103      except:
+
+  171          file_info = IMPORTED[helpable_module_info.__mod_name__.lower()]
+  172:         file_name = file_info.__name__.rsplit("TokisakiRobot.modules.", 1)[1]
+  173          mod_name = file_info.__mod_name__
+
+Tokisaki\Plugins\speed_test.py:
+  1  import speedtest
+  2: from Tokisaki import DEV_USERS, dispatcher
+  3: from Tokisaki.Plugins.disable import DisableAbleCommandHandler
+  4: from Tokisaki.Handlers.validation import dev_plus
+  5  from telegram import InlineKeyboardButton, InlineKeyboardMarkup, ParseMode, Update
+
+Tokisaki\Plugins\users.py:
+  13  
+  14: import Tokisaki.Database.users_sql as sql
+  15: from Tokisaki import DEV_USERS, LOGGER, OWNER_ID, dispatcher
+  16: from Tokisaki.Handlers.validation import dev_plus, sudo_plus
+  17: from Tokisaki.Database.users_sql import get_all_users
+  18  
+
+Tokisaki\Plugins\Admin\admin.py:
+   7  
+   8: from Tokisaki import INSPECTOR, dispatcher
+   9: from Tokisaki.Plugins.disable import DisableAbleCommandHandler
+  10: from Tokisaki.Handlers.validation import (
+  11      bot_admin,
+
+  19  
+  20: from Tokisaki.Handlers.extraction import (
+  21      extract_user,
+
+  23  )
+  24: from Tokisaki.Plugins.Admin.log_channel import loggable
+  25: from Tokisaki.Handlers.alternate import send_message, typing_action
+  26  
+
+Tokisaki\Plugins\Admin\antiflood.py:
+   6  
+   7: from Tokisaki import INSPECTOR, REQUESTER, dispatcher
+   8: from Tokisaki.Handlers.validation import (
+   9      bot_admin,
+
+  13  )
+  14: from Tokisaki.Plugins.Admin.log_channel import loggable
+  15: from Tokisaki.Database import antiflood_sql as sql
+  16  from telegram.error import BadRequest
+
+  25  from telegram.utils.helpers import mention_html
+  26: from Tokisaki.Handlers.string_handling import extract_time
+  27: from Tokisaki.Plugins.Admin.connection import connected
+  28: from Tokisaki.Handlers.alternate import send_message
+  29: from Tokisaki.Database.approve_sql import is_approved
+  30  
+
+Tokisaki\Plugins\Admin\approval.py:
+  1  import html
+  2: from Tokisaki.Plugins.disable import DisableAbleCommandHandler
+  3: from Tokisaki import dispatcher, INSPECTOR
+  4: from Tokisaki.Handlers.extraction import extract_user
+  5  from telegram.ext import CallbackContext, run_async, CallbackQueryHandler
+  6: import Tokisaki.Database.approve_sql as sql
+  7: from Tokisaki.Handlers.validation import user_admin
+  8: from Tokisaki.Plugins.Admin.log_channel import loggable
+  9  from telegram import ParseMode, InlineKeyboardMarkup, InlineKeyboardButton, Update
+
+Tokisaki\Plugins\Admin\ban.py:
+  19  
+  20: from Tokisaki import (
+  21      DEV_USERS,
+
+  27  )
+  28: from Tokisaki.Plugins.disable import DisableAbleCommandHandler
+  29: from Tokisaki.Handlers.validation import (
+  30      bot_admin,
+
+  40  )
+  41: from Tokisaki.Handlers.extraction import extract_user_and_text
+  42: from Tokisaki.Handlers.string_handling import extract_time
+  43: from Tokisaki.Plugins.Admin.log_channel import gloggable, loggable
+  44  
+
+  86              message.reply_text(
+  87:                 "Bring an order from Tokisaki Management to fight a Requester."
+  88              )
+
+Tokisaki\Plugins\Admin\blacklist.py:
+   8  
+   9: import Tokisaki.Database.blacklist_sql as sql
+  10: from Tokisaki import dispatcher, LOGGER
+  11: from Tokisaki.Plugins.disable import DisableAbleCommandHandler
+  12: from Tokisaki.Handlers.validation import user_admin, user_not_admin
+  13: from Tokisaki.Handlers.extraction import extract_text
+  14: from Tokisaki.Handlers.misc import split_message
+  15: from Tokisaki.Plugins.Admin.log_channel import loggable
+  16: from Tokisaki.Plugins.Admin.warns import warn
+  17: from Tokisaki.Handlers.string_handling import extract_time
+  18: from Tokisaki.Plugins.Admin.connection import connected
+  19: from Tokisaki.Database.approve_sql import is_approved
+  20: from Tokisaki.Handlers.alternate import send_message, typing_action
+  21  
+
+Tokisaki\Plugins\Admin\bluser.py:
+   2  import html
+   3: import Tokisaki.Database.blacklistusers_sql as sql
+   4: from Tokisaki import (
+   5      DEV_USERS,
+
+  10  )
+  11: from Tokisaki.Handlers.validation import dev_plus
+  12: from Tokisaki.Handlers.extraction import (
+  13      extract_user,
+
+  15  )
+  16: from Tokisaki.Plugins.Admin.log_channel import gloggable
+  17  from telegram import ParseMode, Update
+
+Tokisaki\Plugins\Admin\connection.py:
+    7  
+    8: import Tokisaki.Database.connection_sql as sql
+    9: from Tokisaki import dispatcher, INSPECTOR, DEV_USERS
+   10: from Tokisaki.Handlers import validation
+   11: from Tokisaki.Handlers.alternate import send_message, typing_action
+   12  
+
+  392  __help__ = """
+  393: Sometimes, you just want to add some notes and filters to a group chat, but you don't want everTokisaki to see; This is where connections come in...
+  394  This allows you to connect to a chat's database, and add things to it without the commands appearing in chat! For obvious reasons, you need to be an admin to add things; but any member in the group can view your data.
+
+Tokisaki\Plugins\Admin\cust_filters.py:
+  17  
+  18: from Tokisaki import dispatcher, LOGGER, INSPECTOR
+  19: from Tokisaki.Plugins.disable import DisableAbleCommandHandler
+  20: from Tokisaki.Handlers.managers import MessageHandlerChecker
+  21: from Tokisaki.Handlers.validation import user_admin
+  22: from Tokisaki.Handlers.extraction import extract_text
+  23: from Tokisaki.Handlers.filters import CustomFilters
+  24: from Tokisaki.Handlers.misc import build_keyboard_parser
+  25: from Tokisaki.Handlers.msg_types import get_filter_type
+  26: from Tokisaki.Handlers.string_handling import (
+  27      split_quotes,
+
+  31  )
+  32: from Tokisaki.Database import cust_filters_sql as sql
+  33  
+  34: from Tokisaki.Plugins.Admin.connection import connected
+  35  
+  36: from Tokisaki.Handlers.alternate import send_message, typing_action
+  37  
+
+Tokisaki\Plugins\Admin\gban.py:
+  17  
+  18: import Tokisaki.Database.global_bans_sql as sql
+  19: from Tokisaki.Database.users_sql import get_user_com_chats
+  20: from Tokisaki import (
+  21      DEV_USERS,
+
+  28  )
+  29: from Tokisaki.Handlers.validation import (
+  30      is_user_admin,
+
+  33  )
+  34: from Tokisaki.Handlers.extraction import (
+  35      extract_user,
+
+  37  )
+  38: from Tokisaki.Handlers.misc import send_to_list
+  39  
+
+Tokisaki\Plugins\Admin\locks.py:
+   11  
+   12: import Tokisaki.Database.locks_sql as sql
+   13: from Tokisaki import dispatcher, INSPECTOR, LOGGER
+   14: from Tokisaki.Plugins.disable import DisableAbleCommandHandler
+   15: from Tokisaki.Handlers.validation import (
+   16      can_delete,
+
+   21  )
+   22: from Tokisaki.Plugins.Admin.log_channel import loggable
+   23: from Tokisaki.Plugins.Admin.connection import connected
+   24: from Tokisaki.Database.approve_sql import is_approved
+   25: from Tokisaki.Handlers.alternate import send_message, typing_action
+   26  
+
+  297                      chat_name = chat.title
+  298:                     text = f"Unlocked {ltype} for everyone in {chat_name}!"
+  299                  else:
+
+  308                      chat_name = update.effective_message.chat.title
+  309:                     text = f"Unlocked {ltype} for everyone!"
+  310                  sql.update_lock(chat.id, ltype, locked=False)
+
+  329                      chat_name = chat.title
+  330:                     text = f"Unlocked {ltype} for everyone in {chat_name}!"
+  331                  else:
+
+  340                      chat_name = update.effective_message.chat.title
+  341:                     text = f"Unlocked {ltype} for everyone!"
+  342  
+
+Tokisaki\Plugins\Admin\log_channel.py:
+   5  
+   6: from Tokisaki.Handlers.misc import is_module_loaded
+   7  
+
+  15  
+  16:     from Tokisaki import EVENT_LOGS, LOGGER, dispatcher
+  17:     from Tokisaki.Handlers.validation import user_admin
+  18:     from Tokisaki.Database import log_channel_sql as sql
+  19  
+
+Tokisaki\Plugins\Admin\muting.py:
+   3  
+   4: from Tokisaki import LOGGER, REQUESTER, dispatcher
+   5: from Tokisaki.Handlers.validation import (
+   6      bot_admin,
+
+  11  )
+  12: from Tokisaki.Handlers.extraction import (
+  13      extract_user,
+
+  15  )
+  16: from Tokisaki.Handlers.string_handling import extract_time
+  17: from Tokisaki.Plugins.Admin.log_channel import loggable
+  18  from telegram import Bot, Chat, ChatPermissions, ParseMode, Update
+
+Tokisaki\Plugins\Admin\notes.py:
+   5  
+   6: import Tokisaki.Database.notes_sql as sql
+   7: from Tokisaki import LOGGER, JOIN_LOGGER, SUPPORT_CHAT, dispatcher, INSPECTOR
+   8: from Tokisaki.Plugins.disable import DisableAbleCommandHandler
+   9: from Tokisaki.Handlers.managers import MessageHandlerChecker
+  10: from Tokisaki.Handlers.validation import user_admin, connection_status
+  11: from Tokisaki.Handlers.misc import build_keyboard, revert_buttons
+  12: from Tokisaki.Handlers.msg_types import get_note_type
+  13: from Tokisaki.Handlers.string_handling import (
+  14      escape_invalid_curly_brackets,
+
+Tokisaki\Plugins\Admin\purge.py:
+   5  
+   6: from Tokisaki import telethn, dispatcher
+   7: from Tokisaki.Handlers.validation import (
+   8      can_delete,
+
+  11  )
+  12: from Tokisaki.Handlers.telethon.validations import (
+  13      can_delete_messages,
+
+  16  
+  17: import Tokisaki.Database.purges_sql as sql
+  18  
+
+Tokisaki\Plugins\Admin\rules.py:
+  2  
+  3: import Tokisaki.Database.rules_sql as sql
+  4: from Tokisaki import dispatcher
+  5: from Tokisaki.Handlers.validation import user_admin, connection_status
+  6: from Tokisaki.Handlers.string_handling import markdown_parser
+  7  from telegram import (
+
+Tokisaki\Plugins\Admin\warns.py:
+   5  import telegram
+   6: from Tokisaki import INSPECTOR, REQUESTER, dispatcher
+   7: from Tokisaki.Plugins.disable import DisableAbleCommandHandler
+   8: from Tokisaki.Handlers.validation import (
+   9      bot_admin,
+
+  14  )
+  15: from Tokisaki.Handlers.extraction import (
+  16      extract_text,
+
+  19  )
+  20: from Tokisaki.Handlers.filters import CustomFilters
+  21: from Tokisaki.Handlers.misc import split_message
+  22: from Tokisaki.Handlers.string_handling import split_quotes
+  23: from Tokisaki.Plugins.Admin.log_channel import loggable
+  24: from Tokisaki.Database import warns_sql as sql
+  25  from telegram import (
+
+  45  from telegram.utils.helpers import mention_html
+  46: from Tokisaki.Database.approve_sql import is_approved
+  47  
+
+Tokisaki\Plugins\Admin\welcome.py:
+    7  
+    8: import Tokisaki
+    9: import Tokisaki.Database.welcome_sql as sql
+   10: import Tokisaki.Database.global_bans_sql as gban_sql
+   11: from Tokisaki import (
+   12      REQUESTER, DEV_USERS, INSPECTOR, JOIN_LOGGER, LOGGER,
+
+   14  )
+   15: from Tokisaki.Handlers.validation import (
+   16      is_user_ban_protected, user_admin, connection_status,
+   17  )
+   18: from Tokisaki.Handlers.misc import (
+   19      build_keyboard,
+
+   21  )
+   22: from Tokisaki.Handlers.msg_types import get_welcome_type
+   23: from Tokisaki.Handlers.string_handling import (
+   24      escape_invalid_curly_brackets, markdown_parser,
+   25  )
+   26: from Tokisaki.Plugins.Admin.log_channel import loggable
+   27: from Tokisaki.Database.global_bans_sql import is_user_gbanned
+   28  from telegram import (
+
+  158  
+  159:         if new_mem.id == bot.id and not Tokisaki.ALLOW_CHATS:
+  160              with suppress(BadRequest):
+  161:                 update.effective_message.reply_text(f"I cant join more groups now due to increasing userbase and load.\nAdd my friend @KoraX_Bot instead\n • Same Tokisaki Code\n • Same Support\n • Same Updates channel\n\nPowered by @Tokisaki_Support")
+  162              bot.leave_chat(update.effective_chat.id)
+
+  673              update.effective_message.reply_text(
+  674:                 "I'll go loaf around and not welcome anyone then.",
+  675              )
+
+Tokisaki\Plugins\Tools\fun_strings.py:
+  14      "May the odds be ever in your favour.",
+  15:     "Run everyone, they just dropped a bomb 💣💣",
+  16      "And they disappeared forever, never to be seen again.",
+
+Tokisaki\Plugins\Tools\fun.py:
+  3  import time
+  4: from Tokisaki.Database.approve_sql import is_approved
+  5: import Tokisaki.Plugins.Tools.fun_strings as fun_strings
+  6: from Tokisaki import dispatcher
+  7: from Tokisaki.Plugins.disable import DisableAbleCommandHandler
+  8: from Tokisaki.Handlers.validation import is_user_admin
+  9: from Tokisaki.Handlers.extraction import extract_user
+  10  from telegram import ChatPermissions, ParseMode, Update
+
+Tokisaki\Plugins\Tools\gtranslator.py:
+  5  from gpytranslate import SyncTranslator
+  6: from Tokisaki import dispatcher
+  7: from Tokisaki.Plugins.disable import DisableAbleCommandHandler
+  8  trans = SyncTranslator()
+
+Tokisaki\Plugins\Tools\identity.py:
+  6  from faker.providers import internet
+  7: from Tokisaki import dispatcher
+  8: from Tokisaki.Plugins.disable import DisableAbleCommandHandler
+  9  from telegram import Update, ParseMode
+
+Tokisaki\Plugins\Tools\image.py:
+   3  from io import BytesIO
+   4: from Tokisaki import dispatcher
+   5: from Tokisaki.Plugins.disable import DisableAbleCommandHandler
+   6  from telegram import Update, ParseMode
+
+  46      except Exception as e:
+  47:       message.reply_text(f'Error Report @Tokisaki_Support, {e}')
+  48  
+
+Tokisaki\Plugins\Tools\music.py:
+   8  
+   9: from Tokisaki import dispatcher
+  10: from Tokisaki.Plugins.disable import DisableAbleCommandHandler
+  11  from telegram import Update, ParseMode
+
+Tokisaki\Plugins\Tools\stickers.py:
+  18  
+  19: from Tokisaki import dispatcher
+  20: from Tokisaki.Plugins.disable import DisableAbleCommandHandler
+  21  
+
+Tokisaki\Plugins\Tools\telegraph.py:
+  1: from Tokisaki import telethn as tbot
+  2  TMP_DOWNLOAD_DIRECTORY = "./"
+
+  7  from telegraph import Telegraph, upload_file, exceptions
+  8: babe = "Tokisaki"
+  9  telegraph = Telegraph()
+
+Tokisaki\Plugins\Tools\text_to_speech.py:
+   9  
+  10: from Tokisaki import dispatcher
+  11: from Tokisaki.Plugins.disable import DisableAbleCommandHandler
+  12: from Tokisaki.Handlers.alternate import typing_action, send_action
+  13  
+
+Tokisaki\Plugins\Tools\ud.py:
+  1  import requests
+  2: from Tokisaki import dispatcher
+  3: from Tokisaki.Plugins.disable import DisableAbleCommandHandler
+  4  from telegram import ParseMode, Update
+
+Tokisaki\Plugins\Tools\wiki.py:
+  1  import wikipedia
+  2: from Tokisaki import dispatcher
+  3: from Tokisaki.Plugins.disable import DisableAbleCommandHandler
+  4  from telegram import ParseMode, Update
+
+Tokisaki\Plugins\User\afk.py:
+   5  
+   6: from Tokisaki import dispatcher
+   7: from Tokisaki.Plugins.disable import (
+   8      DisableAbleCommandHandler,
+
+  10  )
+  11: from Tokisaki.Database import afk_sql as sql, disable_sql
+  12: from Tokisaki.Plugins.users import get_user_id
+  13  from telegram import MessageEntity, Update
+
+Tokisaki\Plugins\User\github.py:
+  1  import requests
+  2: from Tokisaki import dispatcher
+  3: from Tokisaki.Plugins.disable import DisableAbleCommandHandler
+  4  from telegram import Update, ParseMode
+
+Tokisaki\Plugins\User\reporting.py:
+   4  
+   5: from Tokisaki import INSPECTOR, LOGGER, REQUESTER, dispatcher
+   6: from Tokisaki.Handlers.validation import user_admin, user_not_admin, is_user_admin
+   7: from Tokisaki.Plugins.Admin.log_channel import loggable
+   8: from Tokisaki.Database import reporting_sql as sql
+   9  from telegram import Chat, CallbackQuery, InlineKeyboardButton, InlineKeyboardMarkup, ParseMode, Update, User
+
+  36                  msg.reply_text(
+  37:                     "Turned on reporting! You'll be notified whenever anyone reports something."
+  38                  )
+
+Tokisaki\Plugins\User\userinfo.py:
+   11  
+   12: from Tokisaki import (
+   13      DEV_USERS,
+
+   20  )
+   21: from Tokisaki.__help__ import STATS, USER_INFO
+   22: import Tokisaki.Database.userinfo_sql as sql
+   23: from Tokisaki.Plugins.disable import DisableAbleCommandHandler
+   24: from Tokisaki.Database.global_bans_sql import is_user_gbanned
+   25: from Tokisaki.Database.afk_sql import is_afk, check_afk_status
+   26: from Tokisaki.Database.users_sql import get_user_num_chats
+   27: from Tokisaki.Handlers.validation import sudo_plus, user_admin, support_plus
+   28: from Tokisaki.Handlers.extraction import extract_user
+   29  
+
+  298      elif user.id in DEV_USERS:
+  299:         text += "\n┣|• This user is member of 'Tokisaki Developer Team'."
+  300          disaster_level_present = True
+
+  308      if disaster_level_present:
+  309:         text += ' [<a href="https://t.me/Tokisaki_Updates">?</a>]'.format(
+  310              bot.username
+
+  565  *What is that health thingy?*
+  566:  Come and see [HP System explained](https://t.me/Tokisaki_Updates)
+  567  """
