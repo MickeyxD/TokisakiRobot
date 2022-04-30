@@ -9,7 +9,7 @@ from telegram.ext.dispatcher import run_async
 from telegram.error import BadRequest
 from telegram.utils.helpers import escape_markdown, mention_html
 
-from Yone import (
+from Tokisaki import (
     DEV_USERS,
     OWNER_ID,
     TOKEN,
@@ -18,14 +18,14 @@ from Yone import (
     INFOPIC,
     dispatcher,
 )
-from Yone.__help__ import STATS, USER_INFO
-import Yone.Database.userinfo_sql as sql
-from Yone.Plugins.disable import DisableAbleCommandHandler
-from Yone.Database.global_bans_sql import is_user_gbanned
-from Yone.Database.afk_sql import is_afk, check_afk_status
-from Yone.Database.users_sql import get_user_num_chats
-from Yone.Handlers.validation import sudo_plus, user_admin, support_plus
-from Yone.Handlers.extraction import extract_user
+from Tokisaki.__help__ import STATS, USER_INFO
+import Tokisaki.Database.userinfo_sql as sql
+from Tokisaki.Plugins.disable import DisableAbleCommandHandler
+from Tokisaki.Database.global_bans_sql import is_user_gbanned
+from Tokisaki.Database.afk_sql import is_afk, check_afk_status
+from Tokisaki.Database.users_sql import get_user_num_chats
+from Tokisaki.Handlers.validation import sudo_plus, user_admin, support_plus
+from Tokisaki.Handlers.extraction import extract_user
 
 def no_by_per(totalhp, percentage):
     """
@@ -296,7 +296,7 @@ def info(update: Update, context: CallbackContext):
         text += "\n┣|• This User Is My 'Creator'."
         disaster_level_present = True
     elif user.id in DEV_USERS:
-        text += "\n┣|• This user is member of 'Yone Developer Team'."
+        text += "\n┣|• This user is member of 'Tokisaki Developer Team'."
         disaster_level_present = True
     elif user.id in INSPECTOR:
         text += "\n┣|• This person is my Inspector. his Power level is near to my 'Owner' "
@@ -306,7 +306,7 @@ def info(update: Update, context: CallbackContext):
         disaster_level_present = True
 
     if disaster_level_present:
-        text += ' [<a href="https://t.me/Yone_Updates">?</a>]'.format(
+        text += ' [<a href="https://t.me/Tokisaki_Updates">?</a>]'.format(
             bot.username
         )
 
@@ -563,7 +563,7 @@ Examples:
  ‣ `/ginfo`*:* get information about a Group. 
  
 *What is that health thingy?*
- Come and see [HP System explained](https://t.me/Yone_Updates)
+ Come and see [HP System explained](https://t.me/Tokisaki_Updates)
 """
 __mod_name__ = "Infos"
 __command_list__ = ["setbio", "bio", "setme", "me", "info"]

@@ -1,8 +1,8 @@
 import os
 import cv2
 from io import BytesIO
-from Yone import dispatcher
-from Yone.Plugins.disable import DisableAbleCommandHandler
+from Tokisaki import dispatcher
+from Tokisaki.Plugins.disable import DisableAbleCommandHandler
 from telegram import Update, ParseMode
 from telegram.ext import CallbackContext, run_async
 
@@ -44,7 +44,7 @@ def sketch(update: Update, context: CallbackContext):
             )
 
     except Exception as e:
-      message.reply_text(f'Error Report @Yone_Support, {e}')
+      message.reply_text(f'Error Report @Tokisaki_Support, {e}')
 
 
 

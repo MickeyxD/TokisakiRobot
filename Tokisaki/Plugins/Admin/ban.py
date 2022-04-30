@@ -17,7 +17,7 @@ from telegram import (
 )
 from telegram.ext import run_async, CallbackContext, CallbackQueryHandler
 
-from Yone import (
+from Tokisaki import (
     DEV_USERS,
     LOGGER,
     OWNER_ID,
@@ -25,8 +25,8 @@ from Yone import (
     REQUESTER,
     dispatcher,
 )
-from Yone.Plugins.disable import DisableAbleCommandHandler
-from Yone.Handlers.validation import (
+from Tokisaki.Plugins.disable import DisableAbleCommandHandler
+from Tokisaki.Handlers.validation import (
     bot_admin,
     can_restrict,
     connection_status,
@@ -38,9 +38,9 @@ from Yone.Handlers.validation import (
     user_admin_no_reply,
     can_delete,
 )
-from Yone.Handlers.extraction import extract_user_and_text
-from Yone.Handlers.string_handling import extract_time
-from Yone.Plugins.Admin.log_channel import gloggable, loggable
+from Tokisaki.Handlers.extraction import extract_user_and_text
+from Tokisaki.Handlers.string_handling import extract_time
+from Tokisaki.Plugins.Admin.log_channel import gloggable, loggable
 
 
  
@@ -84,7 +84,7 @@ def ban(update: Update, context: CallbackContext) -> str:
             )
         elif user_id in REQUESTER:
             message.reply_text(
-                "Bring an order from Yone Management to fight a Requester."
+                "Bring an order from Tokisaki Management to fight a Requester."
             )
         else:
             message.reply_text("This user has immunity and cannot be banned.")

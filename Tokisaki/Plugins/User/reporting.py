@@ -2,10 +2,10 @@ import html, re
 from typing import Optional
 
 
-from Yone import INSPECTOR, LOGGER, REQUESTER, dispatcher
-from Yone.Handlers.validation import user_admin, user_not_admin, is_user_admin
-from Yone.Plugins.Admin.log_channel import loggable
-from Yone.Database import reporting_sql as sql
+from Tokisaki import INSPECTOR, LOGGER, REQUESTER, dispatcher
+from Tokisaki.Handlers.validation import user_admin, user_not_admin, is_user_admin
+from Tokisaki.Plugins.Admin.log_channel import loggable
+from Tokisaki.Database import reporting_sql as sql
 from telegram import Chat, CallbackQuery, InlineKeyboardButton, InlineKeyboardMarkup, ParseMode, Update, User
 from telegram.error import BadRequest, Unauthorized
 from telegram.ext import (
@@ -34,7 +34,7 @@ def report_setting(update: Update, context: CallbackContext):
             if args[0] in ("yes", "on"):
                 sql.set_user_setting(chat.id, True)
                 msg.reply_text(
-                    "Turned on reporting! You'll be notified whenever anyone reports something."
+                    "Turned on reporting! You'll be notified whenever anTokisaki reports something."
                 )
 
             elif args[0] in ("no", "off"):

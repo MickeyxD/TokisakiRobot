@@ -12,7 +12,7 @@ RUN_STRINGS = (
     "*Nezuko run activated*",
     "Hey take responsibilty for what you just did!",
     "May the odds be ever in your favour.",
-    "Run everyone, they just dropped a bomb 💣💣",
+    "Run everTokisaki, they just dropped a bomb 💣💣",
     "And they disappeared forever, never to be seen again.",
     "Legend has it, they're still running.",
     "Hasta la vista, baby.",

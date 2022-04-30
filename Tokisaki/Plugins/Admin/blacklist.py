@@ -6,18 +6,18 @@ from telegram.error import BadRequest
 from telegram.ext import CommandHandler, MessageHandler, Filters
 from telegram.utils.helpers import mention_html
 
-import Yone.Database.blacklist_sql as sql
-from Yone import dispatcher, LOGGER
-from Yone.Plugins.disable import DisableAbleCommandHandler
-from Yone.Handlers.validation import user_admin, user_not_admin
-from Yone.Handlers.extraction import extract_text
-from Yone.Handlers.misc import split_message
-from Yone.Plugins.Admin.log_channel import loggable
-from Yone.Plugins.Admin.warns import warn
-from Yone.Handlers.string_handling import extract_time
-from Yone.Plugins.Admin.connection import connected
-from Yone.Database.approve_sql import is_approved
-from Yone.Handlers.alternate import send_message, typing_action
+import Tokisaki.Database.blacklist_sql as sql
+from Tokisaki import dispatcher, LOGGER
+from Tokisaki.Plugins.disable import DisableAbleCommandHandler
+from Tokisaki.Handlers.validation import user_admin, user_not_admin
+from Tokisaki.Handlers.extraction import extract_text
+from Tokisaki.Handlers.misc import split_message
+from Tokisaki.Plugins.Admin.log_channel import loggable
+from Tokisaki.Plugins.Admin.warns import warn
+from Tokisaki.Handlers.string_handling import extract_time
+from Tokisaki.Plugins.Admin.connection import connected
+from Tokisaki.Database.approve_sql import is_approved
+from Tokisaki.Handlers.alternate import send_message, typing_action
 
 BLACKLIST_GROUP = 11
 

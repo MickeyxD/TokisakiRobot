@@ -5,26 +5,26 @@ import time
 from contextlib import suppress
 from functools import partial
 
-import Yone
-import Yone.Database.welcome_sql as sql
-import Yone.Database.global_bans_sql as gban_sql
-from Yone import (
+import Tokisaki
+import Tokisaki.Database.welcome_sql as sql
+import Tokisaki.Database.global_bans_sql as gban_sql
+from Tokisaki import (
     REQUESTER, DEV_USERS, INSPECTOR, JOIN_LOGGER, LOGGER,
     OWNER_ID, dispatcher
 )
-from Yone.Handlers.validation import (
+from Tokisaki.Handlers.validation import (
     is_user_ban_protected, user_admin, connection_status,
 )
-from Yone.Handlers.misc import (
+from Tokisaki.Handlers.misc import (
     build_keyboard,
     revert_buttons,
 )
-from Yone.Handlers.msg_types import get_welcome_type
-from Yone.Handlers.string_handling import (
+from Tokisaki.Handlers.msg_types import get_welcome_type
+from Tokisaki.Handlers.string_handling import (
     escape_invalid_curly_brackets, markdown_parser,
 )
-from Yone.Plugins.Admin.log_channel import loggable
-from Yone.Database.global_bans_sql import is_user_gbanned
+from Tokisaki.Plugins.Admin.log_channel import loggable
+from Tokisaki.Database.global_bans_sql import is_user_gbanned
 from telegram import (
     ChatPermissions, InlineKeyboardButton,
     InlineKeyboardMarkup, ParseMode, Update,
@@ -156,9 +156,9 @@ def new_member(update: Update, context: CallbackContext):
 
     for new_mem in new_members:
 
-        if new_mem.id == bot.id and not Yone.ALLOW_CHATS:
+        if new_mem.id == bot.id and not Tokisaki.ALLOW_CHATS:
             with suppress(BadRequest):
-                update.effective_message.reply_text(f"I cant join more groups now due to increasing userbase and load.\nAdd my friend @KoraX_Bot instead\n • Same Yone Code\n • Same Support\n • Same Updates channel\n\nPowered by @Yone_Support")
+                update.effective_message.reply_text(f"I cant join more groups now due to increasing userbase and load.\nAdd my friend @KoraX_Bot instead\n • Same Tokisaki Code\n • Same Support\n • Same Updates channel\n\nPowered by @Tokisaki_Support")
             bot.leave_chat(update.effective_chat.id)
             return
 
@@ -671,7 +671,7 @@ def welcome(update: Update, context: CallbackContext):
         elif args[0].lower() in ("off", "no"):
             sql.set_welc_preference(str(chat.id), False)
             update.effective_message.reply_text(
-                "I'll go loaf around and not welcome anyone then.",
+                "I'll go loaf around and not welcome anTokisaki then.",
             )
 
         else:

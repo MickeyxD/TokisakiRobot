@@ -1,20 +1,20 @@
 import html
 from typing import Optional
 
-from Yone import LOGGER, REQUESTER, dispatcher
-from Yone.Handlers.validation import (
+from Tokisaki import LOGGER, REQUESTER, dispatcher
+from Tokisaki.Handlers.validation import (
     bot_admin,
     can_restrict,
     connection_status,
     is_user_admin,
     user_admin,
 )
-from Yone.Handlers.extraction import (
+from Tokisaki.Handlers.extraction import (
     extract_user,
     extract_user_and_text,
 )
-from Yone.Handlers.string_handling import extract_time
-from Yone.Plugins.Admin.log_channel import loggable
+from Tokisaki.Handlers.string_handling import extract_time
+from Tokisaki.Plugins.Admin.log_channel import loggable
 from telegram import Bot, Chat, ChatPermissions, ParseMode, Update
 from telegram.error import BadRequest
 from telegram.ext import CallbackContext, CommandHandler, run_async

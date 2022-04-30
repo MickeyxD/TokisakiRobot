@@ -1,7 +1,7 @@
 import speedtest
-from Yone import DEV_USERS, dispatcher
-from Yone.Plugins.disable import DisableAbleCommandHandler
-from Yone.Handlers.validation import dev_plus
+from Tokisaki import DEV_USERS, dispatcher
+from Tokisaki.Plugins.disable import DisableAbleCommandHandler
+from Tokisaki.Handlers.validation import dev_plus
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, ParseMode, Update
 from telegram.ext import CallbackContext, CallbackQueryHandler, run_async
 

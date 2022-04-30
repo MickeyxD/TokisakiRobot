@@ -1,12 +1,12 @@
 import html
 import random
 import time
-from Yone.Database.approve_sql import is_approved
-import Yone.Plugins.Tools.fun_strings as fun_strings
-from Yone import dispatcher
-from Yone.Plugins.disable import DisableAbleCommandHandler
-from Yone.Handlers.validation import is_user_admin
-from Yone.Handlers.extraction import extract_user
+from Tokisaki.Database.approve_sql import is_approved
+import Tokisaki.Plugins.Tools.fun_strings as fun_strings
+from Tokisaki import dispatcher
+from Tokisaki.Plugins.disable import DisableAbleCommandHandler
+from Tokisaki.Handlers.validation import is_user_admin
+from Tokisaki.Handlers.extraction import extract_user
 from telegram import ChatPermissions, ParseMode, Update
 from telegram.error import BadRequest
 from telegram.ext import CallbackContext, run_async

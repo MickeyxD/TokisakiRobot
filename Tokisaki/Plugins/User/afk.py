@@ -3,13 +3,13 @@ import html
 from datetime import datetime
 import humanize
 
-from Yone import dispatcher
-from Yone.Plugins.disable import (
+from Tokisaki import dispatcher
+from Tokisaki.Plugins.disable import (
     DisableAbleCommandHandler,
     DisableAbleMessageHandler,
 )
-from Yone.Database import afk_sql as sql, disable_sql
-from Yone.Plugins.users import get_user_id
+from Tokisaki.Database import afk_sql as sql, disable_sql
+from Tokisaki.Plugins.users import get_user_id
 from telegram import MessageEntity, Update
 from telegram.error import BadRequest
 from telegram.ext import CallbackContext, Filters, MessageHandler, run_async

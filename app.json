@@ -1,14 +1,14 @@
 {
-    "name": "YoneRobot",
+    "name": "TokisakiRobot",
     "description": "Telegram group management bot.",
     "keywords": [
        "telegram",
        "anime",
        "group",
        "manager",
-       "yone"
+       "Tokisaki"
     ],   
- "repository": "https://github.com/noob-kittu/YoneRobot",
+ "repository": "https://github.com/noob-kittu/TokisakiRobot",
  "addons": [
     {
        "options": {

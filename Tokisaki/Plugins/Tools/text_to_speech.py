@@ -7,9 +7,9 @@ import json
 from telegram import ChatAction
 from telegram.ext import run_async
 
-from Yone import dispatcher
-from Yone.Plugins.disable import DisableAbleCommandHandler
-from Yone.Handlers.alternate import typing_action, send_action
+from Tokisaki import dispatcher
+from Tokisaki.Plugins.disable import DisableAbleCommandHandler
+from Tokisaki.Handlers.alternate import typing_action, send_action
 
 @send_action(ChatAction.RECORD_AUDIO)
 def gtts(update, context):

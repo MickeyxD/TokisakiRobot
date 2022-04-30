@@ -1,7 +1,7 @@
 import threading
 
-from Yone import dispatcher
-from Yone.Database import BASE, SESSION
+from Tokisaki import dispatcher
+from Tokisaki.Database import BASE, SESSION
 from sqlalchemy import (
     Column,
     ForeignKey,

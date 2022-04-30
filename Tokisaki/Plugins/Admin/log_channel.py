@@ -3,7 +3,7 @@ from functools import wraps
 
 from telegram.ext import CallbackContext
 
-from Yone.Handlers.misc import is_module_loaded
+from Tokisaki.Handlers.misc import is_module_loaded
 
 FILENAME = __name__.rsplit(".", 1)[-1]
 
@@ -13,9 +13,9 @@ if is_module_loaded(FILENAME):
     from telegram.ext import CommandHandler, JobQueue, run_async
     from telegram.utils.helpers import escape_markdown
 
-    from Yone import EVENT_LOGS, LOGGER, dispatcher
-    from Yone.Handlers.validation import user_admin
-    from Yone.Database import log_channel_sql as sql
+    from Tokisaki import EVENT_LOGS, LOGGER, dispatcher
+    from Tokisaki.Handlers.validation import user_admin
+    from Tokisaki.Database import log_channel_sql as sql
 
     def loggable(func):
         @wraps(func)

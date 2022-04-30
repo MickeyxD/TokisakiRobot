@@ -1,19 +1,19 @@
 # Module to blacklist users and prevent them from using commands by @TheRealPhoenix
 import html
-import Yone.Database.blacklistusers_sql as sql
-from Yone import (
+import Tokisaki.Database.blacklistusers_sql as sql
+from Tokisaki import (
     DEV_USERS,
     OWNER_ID,
     INSPECTOR,
     REQUESTER,
     dispatcher,
 )
-from Yone.Handlers.validation import dev_plus
-from Yone.Handlers.extraction import (
+from Tokisaki.Handlers.validation import dev_plus
+from Tokisaki.Handlers.extraction import (
     extract_user,
     extract_user_and_text,
 )
-from Yone.Plugins.Admin.log_channel import gloggable
+from Tokisaki.Plugins.Admin.log_channel import gloggable
 from telegram import ParseMode, Update
 from telegram.error import BadRequest
 from telegram.ext import CallbackContext, CommandHandler, run_async

@@ -1,6 +1,6 @@
 import threading
 
-from Yone.Database import BASE, SESSION
+from Tokisaki.Database import BASE, SESSION
 from sqlalchemy import Column, String, distinct, func
 
 

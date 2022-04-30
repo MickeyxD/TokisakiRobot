@@ -15,25 +15,25 @@ from telegram.ext import (
 )
 from telegram.utils.helpers import mention_html, escape_markdown
 
-from Yone import dispatcher, LOGGER, INSPECTOR
-from Yone.Plugins.disable import DisableAbleCommandHandler
-from Yone.Handlers.managers import MessageHandlerChecker
-from Yone.Handlers.validation import user_admin
-from Yone.Handlers.extraction import extract_text
-from Yone.Handlers.filters import CustomFilters
-from Yone.Handlers.misc import build_keyboard_parser
-from Yone.Handlers.msg_types import get_filter_type
-from Yone.Handlers.string_handling import (
+from Tokisaki import dispatcher, LOGGER, INSPECTOR
+from Tokisaki.Plugins.disable import DisableAbleCommandHandler
+from Tokisaki.Handlers.managers import MessageHandlerChecker
+from Tokisaki.Handlers.validation import user_admin
+from Tokisaki.Handlers.extraction import extract_text
+from Tokisaki.Handlers.filters import CustomFilters
+from Tokisaki.Handlers.misc import build_keyboard_parser
+from Tokisaki.Handlers.msg_types import get_filter_type
+from Tokisaki.Handlers.string_handling import (
     split_quotes,
     button_markdown_parser,
     escape_invalid_curly_brackets,
     markdown_to_html,
 )
-from Yone.Database import cust_filters_sql as sql
+from Tokisaki.Database import cust_filters_sql as sql
 
-from Yone.Plugins.Admin.connection import connected
+from Tokisaki.Plugins.Admin.connection import connected
 
-from Yone.Handlers.alternate import send_message, typing_action
+from Tokisaki.Handlers.alternate import send_message, typing_action
 
 HANDLER_GROUP = 10
 

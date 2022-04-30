@@ -5,9 +5,9 @@ from telegram.error import BadRequest
 from telegram.ext import CallbackContext, CallbackQueryHandler, CommandHandler, Filters, run_async
 from telegram.utils.helpers import mention_html
 
-from Yone import INSPECTOR, dispatcher
-from Yone.Plugins.disable import DisableAbleCommandHandler
-from Yone.Handlers.validation import (
+from Tokisaki import INSPECTOR, dispatcher
+from Tokisaki.Plugins.disable import DisableAbleCommandHandler
+from Tokisaki.Handlers.validation import (
     bot_admin,
     can_pin,
     can_promote,
@@ -17,12 +17,12 @@ from Yone.Handlers.validation import (
     ADMIN_CACHE,
 )
 
-from Yone.Handlers.extraction import (
+from Tokisaki.Handlers.extraction import (
     extract_user,
     extract_user_and_text,
 )
-from Yone.Plugins.Admin.log_channel import loggable
-from Yone.Handlers.alternate import send_message, typing_action
+from Tokisaki.Plugins.Admin.log_channel import loggable
+from Tokisaki.Handlers.alternate import send_message, typing_action
 
 
 

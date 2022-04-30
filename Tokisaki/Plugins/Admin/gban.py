@@ -15,9 +15,9 @@ from telegram.ext import (
 )
 from telegram.utils.helpers import mention_html
 
-import Yone.Database.global_bans_sql as sql
-from Yone.Database.users_sql import get_user_com_chats
-from Yone import (
+import Tokisaki.Database.global_bans_sql as sql
+from Tokisaki.Database.users_sql import get_user_com_chats
+from Tokisaki import (
     DEV_USERS,
     EVENT_LOGS,
     OWNER_ID,
@@ -26,16 +26,16 @@ from Yone import (
     REQUESTER,
     dispatcher,
 )
-from Yone.Handlers.validation import (
+from Tokisaki.Handlers.validation import (
     is_user_admin,
     support_plus,
     user_admin,
 )
-from Yone.Handlers.extraction import (
+from Tokisaki.Handlers.extraction import (
     extract_user,
     extract_user_and_text,
 )
-from Yone.Handlers.misc import send_to_list
+from Tokisaki.Handlers.misc import send_to_list
 
 GBAN_ENFORCE_GROUP = 6
 STRICT_GBAN = True

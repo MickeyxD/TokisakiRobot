@@ -9,20 +9,20 @@ from telegram.utils.helpers import mention_html
 
 from alphabet_detector import AlphabetDetector
 
-import Yone.Database.locks_sql as sql
-from Yone import dispatcher, INSPECTOR, LOGGER
-from Yone.Plugins.disable import DisableAbleCommandHandler
-from Yone.Handlers.validation import (
+import Tokisaki.Database.locks_sql as sql
+from Tokisaki import dispatcher, INSPECTOR, LOGGER
+from Tokisaki.Plugins.disable import DisableAbleCommandHandler
+from Tokisaki.Handlers.validation import (
     can_delete,
     is_user_admin,
     user_not_admin,
     is_bot_admin,
     user_admin,
 )
-from Yone.Plugins.Admin.log_channel import loggable
-from Yone.Plugins.Admin.connection import connected
-from Yone.Database.approve_sql import is_approved
-from Yone.Handlers.alternate import send_message, typing_action
+from Tokisaki.Plugins.Admin.log_channel import loggable
+from Tokisaki.Plugins.Admin.connection import connected
+from Tokisaki.Database.approve_sql import is_approved
+from Tokisaki.Handlers.alternate import send_message, typing_action
 
 ad = AlphabetDetector()
 
@@ -295,7 +295,7 @@ def unlock(update, context) -> str:
                     chat = dispatcher.bot.getChat(conn)
                     chat_id = conn
                     chat_name = chat.title
-                    text = f"Unlocked {ltype} for everyone in {chat_name}!"
+                    text = f"Unlocked {ltype} for everTokisaki in {chat_name}!"
                 else:
                     if update.effective_message.chat.type == "private":
                         send_message(
@@ -306,7 +306,7 @@ def unlock(update, context) -> str:
                     chat = update.effective_chat
                     chat_id = update.effective_chat.id
                     chat_name = update.effective_message.chat.title
-                    text = f"Unlocked {ltype} for everyone!"
+                    text = f"Unlocked {ltype} for everTokisaki!"
                 sql.update_lock(chat.id, ltype, locked=False)
                 send_message(update.effective_message, text, parse_mode="markdown")
                 return (
@@ -327,7 +327,7 @@ def unlock(update, context) -> str:
                     chat = dispatcher.bot.getChat(conn)
                     chat_id = conn
                     chat_name = chat.title
-                    text = f"Unlocked {ltype} for everyone in {chat_name}!"
+                    text = f"Unlocked {ltype} for everTokisaki in {chat_name}!"
                 else:
                     if update.effective_message.chat.type == "private":
                         send_message(
@@ -338,7 +338,7 @@ def unlock(update, context) -> str:
                     chat = update.effective_chat
                     chat_id = update.effective_chat.id
                     chat_name = update.effective_message.chat.title
-                    text = f"Unlocked {ltype} for everyone!"
+                    text = f"Unlocked {ltype} for everTokisaki!"
 
                 can_change_info = chat.get_member(context.bot.id).can_change_info
                 if not can_change_info:

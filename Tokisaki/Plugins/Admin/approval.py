@@ -1,11 +1,11 @@
 import html
-from Yone.Plugins.disable import DisableAbleCommandHandler
-from Yone import dispatcher, INSPECTOR
-from Yone.Handlers.extraction import extract_user
+from Tokisaki.Plugins.disable import DisableAbleCommandHandler
+from Tokisaki import dispatcher, INSPECTOR
+from Tokisaki.Handlers.extraction import extract_user
 from telegram.ext import CallbackContext, run_async, CallbackQueryHandler
-import Yone.Database.approve_sql as sql
-from Yone.Handlers.validation import user_admin
-from Yone.Plugins.Admin.log_channel import loggable
+import Tokisaki.Database.approve_sql as sql
+from Tokisaki.Handlers.validation import user_admin
+from Tokisaki.Plugins.Admin.log_channel import loggable
 from telegram import ParseMode, InlineKeyboardMarkup, InlineKeyboardButton, Update
 from telegram.utils.helpers import mention_html
 from telegram.error import BadRequest
